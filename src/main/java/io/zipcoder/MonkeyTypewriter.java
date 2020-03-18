@@ -20,6 +20,30 @@ public class MonkeyTypewriter {
                 "its noisiest authorities insisted on its being received, for good or for\n" +
                 "evil, in the superlative degree of comparison only.";
 
+
+        SafeCopier safeCopier = new SafeCopier(introduction);
+        Thread thread1 = new Thread(safeCopier);
+        thread1.setName("Thread");
+
+
+        Thread thread2 = new Thread(safeCopier);
+        thread2.setName("2Thread");
+        thread1.start();
+         thread2.start();
+
+
+         UnsafeCopier unsafeCopier = new UnsafeCopier(introduction);
+        Thread thread3 = new Thread(unsafeCopier);
+        thread3.setName("3Thread");
+        Thread thread4 = new Thread(unsafeCopier);
+        thread4.setName("4Thread");
+        thread3.start();
+        thread4.start();
+
+
+
+
+
         // Do all of the Monkey / Thread building here
         // For each Copier(one safe and one unsafe), create and start 5 monkeys copying the introduction to
         // A Tale Of Two Cities.
